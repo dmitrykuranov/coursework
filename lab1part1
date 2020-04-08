@@ -1,0 +1,73 @@
+#include "stdafx.h"
+#include <iostream>
+#include <stdio.h>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+
+int main()
+{
+	string string, str;
+	ifstream file("INlab1part1.txt");
+	ofstream fout("OUTlab1part1.txt");
+
+	int k = 0;
+	int state;
+	while (getline(file, string))
+	{
+		for (int i = 0; i < string.length(); i++)
+		{
+			if ((string[i] == '#') && (string[i + 1] == ' '))
+			{
+				k = 2;
+				state = i;
+				break;
+			}
+			if ((string[i] == '"""') && (string[i + 1] == ' '))
+			{
+				state = i;
+				k = 1;
+				break;
+			}
+		}
+		if (k == 3)
+		{
+			for (int i = 0; i < string.length(); i++)
+			{
+				if ((string[i] == ' ') && (string[i + 1] == '"""'))
+				{
+					state = i + 2;
+					break;
+				}
+			}
+			for (int i = state; i < string.length(); i++)
+			{
+				int j = 0;
+				str[j] = string[i];
+				j++;
+			}
+			k = 0;
+		}
+		if (k == 2)
+			for (int i = 0; i < state; i++)
+			{
+				str[i] = string[i];
+				k = 0;
+			}
+		if (k == 1)
+			for (int i = 0; i < state; i++)
+			{
+				str[i] = string[i];
+			}
+		if (k != 3)
+			fout << str;
+		if (k == 1) k = 3;
+		cout << str << endl;
+	}
+
+	file.close();
+	fout.close();
+    return 0;
+}
