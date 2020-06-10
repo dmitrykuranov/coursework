@@ -1,0 +1,37 @@
+program coursework;
+var t : float;
+var m, i: integer;
+
+@begin@
+
+function max(var a, b: integer;): integer;
+{
+if  ((a < b) and (a!=b)) {
+	integer max := b;}
+@a or b is max?@
+	else  {
+	integer max := a; };
+print (max);
+}
+
+{
+float t := 5.3;  @real value@
+integer c := 1;
+while (c < 20) do
+	{
+	print(c);
+	integer j := c;
+	integer i := j * 3;
+        integer c := j + 2;
+	print(i);
+	};
+
+integer x := 2 * 40;
+integer y := x / 4;
+integer z := y + x;
+print(z);
+integer s := y - x;
+print(s);
+}
+
+@end@
